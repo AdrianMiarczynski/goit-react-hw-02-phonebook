@@ -1,4 +1,5 @@
-const { Component } = require('react');
+import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class FilterContacts extends Component {
   render() {
@@ -18,3 +19,8 @@ class FilterContacts extends Component {
   }
 }
 export default FilterContacts;
+
+FilterContacts.propTypes = {
+  filter: PropTypes.string.isRequired,
+  handlerChange: PropTypes.func.isRequired,
+};

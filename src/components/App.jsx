@@ -40,9 +40,10 @@ export class App extends Component {
       name.toLowerCase().includes(data.toLowerCase())
     );
   };
-  // filterEvcontacts = ev => {
-
-  // }
+  filterEvcontacts = ev => {
+    this.handlerChange(ev);
+    this.filterContacts(ev.target.value);
+  };
 
   render() {
     return (
@@ -56,8 +57,11 @@ export class App extends Component {
         />
         <div>
           <h2>Contacts</h2>
-          <FilterContacts filter={this.state.filter} />
-          <Contacts contacts={this.state.contacts} />
+          <FilterContacts
+            filter={this.state.filter}
+            handlerChange={this.filterEvcontacts}
+          />
+          <Contacts contacts={this.filterContacts(this.state.filter)} />
         </div>
       </div>
     );

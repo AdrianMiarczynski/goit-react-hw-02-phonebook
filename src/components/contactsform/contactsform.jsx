@@ -1,4 +1,5 @@
-const { Component } = require('react');
+import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ContactsForm extends Component {
   render() {
@@ -38,3 +39,10 @@ class ContactsForm extends Component {
   }
 }
 export default ContactsForm;
+
+ContactsForm.propTypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  handlerSubmit: PropTypes.func.isRequired,
+  handlerChange: PropTypes.func.isRequired,
+};
