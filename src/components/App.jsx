@@ -2,7 +2,7 @@ import { Component } from 'react';
 import ContactsForm from './contactsform/contactsform';
 import { nanoid } from 'nanoid';
 import Contacts from './contactslist/contactslist';
-import FilterContacts from './contactfilter/contactfilter';
+import FilterContacts from './filter/filter';
 
 export class App extends Component {
   state = {
@@ -41,7 +41,7 @@ export class App extends Component {
     );
   };
   // filterEvcontacts = ev => {
-    
+
   // }
 
   render() {
