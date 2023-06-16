@@ -2,6 +2,7 @@ import { Component } from 'react';
 import ContactsForm from './contactsform/contactsform';
 import { nanoid } from 'nanoid';
 import Contacts from './contactslist/contactslist';
+import FilterContacts from './contactfilter/contactfilter';
 
 export class App extends Component {
   state = {
@@ -34,6 +35,15 @@ export class App extends Component {
     }));
   };
 
+  filterContacts = data => {
+    return this.state.contacts.filter(({ name }) =>
+      name.toLowerCase().includes(data.toLowerCase())
+    );
+  };
+  // filterEvcontacts = ev => {
+    
+  // }
+
   render() {
     return (
       <div>
@@ -46,6 +56,7 @@ export class App extends Component {
         />
         <div>
           <h2>Contacts</h2>
+          <FilterContacts filter={this.state.filter} />
           <Contacts contacts={this.state.contacts} />
         </div>
       </div>
