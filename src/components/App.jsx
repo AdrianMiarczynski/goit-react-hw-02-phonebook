@@ -6,12 +6,7 @@ import FilterContacts from './filter/filter';
 
 export class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Rormione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: '',
     name: '',
     number: '',
@@ -25,6 +20,9 @@ export class App extends Component {
     const { name, number } = this.state;
     const id = nanoid();
     console.log(name, id);
+    if (this.filterContacts(name).length !== 0) {
+      return alert(`${name} is already in contacts`);
+    }
     this.addContacts({ name, number, id });
     console.log(this.state);
   };
@@ -45,6 +43,12 @@ export class App extends Component {
     this.filterContacts(ev.target.value);
   };
 
+  deleteContact = id => {
+    this.setState({
+      contacts: this.state.contacts.filter(contact => contact.id !== id),
+    });
+  };
+
   render() {
     return (
       <div>
@@ -61,7 +65,10 @@ export class App extends Component {
             filter={this.state.filter}
             handlerChange={this.filterEvcontacts}
           />
-          <Contacts contacts={this.filterContacts(this.state.filter)} />
+          <Contacts
+            contacts={this.filterContacts(this.state.filter)}
+            deleteContact={this.deleteContact}
+          />
         </div>
       </div>
     );

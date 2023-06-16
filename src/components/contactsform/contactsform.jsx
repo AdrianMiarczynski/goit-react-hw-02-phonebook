@@ -1,18 +1,20 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import css from './contactsform.module.css';
 
 class ContactsForm extends Component {
   render() {
     const { name } = this.props.name;
     const { number } = this.props.number;
     return (
-      <form onSubmit={this.props.handlerSubmit}>
-        <label htmlFor="name">
+      <form onSubmit={this.props.handlerSubmit} className={css.form}>
+        <label htmlFor="name" className={css['form__label']}>
           Name
           <input
             onChange={this.props.handlerChange}
             value={name}
             type="text"
+            className={css['form__input']}
             name="name"
             id="name"
             // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -20,7 +22,7 @@ class ContactsForm extends Component {
             required
           />
         </label>
-        <label htmlFor="number">
+        <label htmlFor="number" className={css['form__label']}>
           Number
           <input
             type="tel"
@@ -30,10 +32,13 @@ class ContactsForm extends Component {
             required
             id="number"
             value={number}
+            className={css['form__input']}
             onChange={this.props.handlerChange}
           />
         </label>
-        <button type="submit">Add contact</button>
+        <button type="submit" className={css['form__btn']}>
+          Add contact
+        </button>
       </form>
     );
   }
